@@ -420,6 +420,7 @@ class FFMpeg(object):
 
         cmds = [self.ffmpeg_path, '-i', infile]
         cmds.extend(opts)
+        cmds.extend(['-movflags', 'faststart'])
         cmds.extend(['-y', outfile])
 
         if timeout:
