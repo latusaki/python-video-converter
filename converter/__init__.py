@@ -121,9 +121,16 @@ class Converter(object):
             else:
                 format_options.extend(['-map', str(m)])
 
+        thread_opt = []
+        if 'threads' in opt:
+            thread_opt.extend(['-threads', str(opt['threads'])])
+
+        flags_opt = []
+        if 'movflags' in opt:
+            flags_opt.extend(['-movflags', str(opt['movflags'])])
 
         # aggregate all options
-        optlist = audio_options + video_options + subtitle_options + format_options
+        optlist = audio_options + video_options + subtitle_options + format_options + thread_opt + flags_opt
 
         if twopass == 1:
             optlist.extend(['-pass', '1'])
